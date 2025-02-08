@@ -1,0 +1,98 @@
+# AI Surveillance System Configuration
+# This file controls all aspects of the surveillance system operation
+
+#######################
+# System Settings
+#######################
+system:
+  # Logging level: DEBUG, INFO, WARNING, ERROR
+  log_level: INFO
+  
+  # Enable/disable video recording
+  recording_enabled: true
+  
+  # Path where recordings will be stored
+  recording_path: "recordings"
+  
+  # Enable/disable live display of camera feeds
+  display_enabled: true
+
+#######################
+# Camera Scanner Settings
+#######################
+camera_scan:
+  # IP ranges to scan for cameras
+  # Add your local network ranges here
+  ip_ranges:
+    - "192.168.1"  # Common home/office network
+    - "192.168.0"  # Alternative network range
+    - "10.0.0"     # Enterprise network range
+    - "172.16.0"   # Alternative enterprise range
+
+  # Ports to scan for camera feeds
+  ports:
+    - 554   # Standard RTSP port
+    - 8000  # Common HTTP stream port
+    - 8080  # Alternative HTTP port
+    - 80    # Standard HTTP port
+    - 8554  # Alternative RTSP port
+    - 9000  # Common HTTP stream port
+
+  # Common camera login credentials to try
+  credentials:
+    - username: "admin"     # Most common default username
+      password: "admin"     # Most common default password
+    - username: "admin"
+      password: "12345"
+    - username: ""         # Some cameras allow blank credentials
+      password: ""
+
+#######################
+# AI Processing Settings
+#######################
+ai:
+  # Face Detection Configuration
+  face_detection:
+    enabled: true
+    min_size: 30          # Minimum face size to detect (pixels)
+    scale_factor: 1.1     # Image scaling for detection
+    min_neighbors: 4      # Detection confidence threshold
+    
+  # Motion Detection Settings
+  motion_detection:
+    enabled: true
+    threshold: 20         # Motion sensitivity (lower = more sensitive)
+    min_area: 1000       # Minimum pixel area to trigger motion
+    
+  # Person Detection Configuration
+  person_detection:
+    enabled: true
+    scale: 1.05          # Image scaling for detection
+    min_neighbors: 3     # Detection confidence threshold
+    
+  # Recording Settings
+  recording:
+    # Recording Triggers
+    motion_trigger: true    # Record when motion detected
+    continuous: false      # Continuous recording option
+    
+    # Video Format Settings
+    format: "avi"          # Video format (avi, mp4)
+    fps: 20               # Frames per second
+    retention_days: 7     # Days to keep recordings
+
+#######################
+# Display Settings
+#######################
+display:
+  # Window Configuration
+  window_name: "AI Surveillance System"
+  grid_enabled: true     # Show cameras in grid layout
+  
+  # Display Dimensions
+  cell_width: 640       # Width of each camera view
+  cell_height: 480      # Height of each camera view
+  
+  # Overlay Settings
+  show_timestamps: true  # Show time on video
+  show_detection_boxes: true  # Show AI detection boxes

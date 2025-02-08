@@ -1,0 +1,19 @@
+cameras:
+  - name: "Camera1"
+    url: "rtsp://admin:admin@192.168.1.100:554/stream1"  # Replace with your camera URL
+    enabled: true
+    
+  - name: "Camera2"
+    url: "rtsp://admin:admin@192.168.1.101:554/stream1"  # Replace with your camera URL
+    enabled: false
+
+ai_settings:
+  confidence_threshold: 0.5
+  model_path: "models/yolov3.weights"
+  config_path: "models/yolov3.cfg"
+  labels_path: "models/coco.names"
+
+server:
+  host: "0.0.0.0"
+  port: 5000
+  debug: false

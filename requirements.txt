@@ -1,0 +1,5 @@
+opencv-python==4.8.0
+numpy==1.24.3
+imutils==0.5.4
+PyYAML==6.0.1
+python-nmap==0.7.1
